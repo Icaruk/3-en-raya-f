@@ -1,6 +1,7 @@
 
 import { Button, Card, Center, Group, Input, InputWrapper, SimpleGrid, Space, TextInput, Title } from "@mantine/core";
 import { useNotifications } from "@mantine/notifications";
+import dame from "dame";
 import React, { useRef } from "react";
 import { useNavigate, useRoutes } from "react-router-dom";
 
@@ -15,7 +16,7 @@ export default function Home() {
 	
 	
 	
-	const pulsaJugarContraIA = () => {
+	const pulsaJugarContraIA = async () => {
 		
 		const username = refInput.current.value;
 		
@@ -28,7 +29,21 @@ export default function Home() {
 		});
 		
 		
-		navigate("/game");
+		// Pido nueva partida
+		const {response, isError} = await dame.post("/newMatch", {
+			username: username,
+		});
+		
+		if (isError) return notifications.showNotification({
+			color: "red",
+			title: "Error",
+			message: response?.message ?? "Error desconocido",
+		});
+		
+		
+		// Guardo el matchId por si cierra la pestaña y navego
+		localStorage.setItem("matchId", response._id);
+		navigate(`/game?matchId=${response._id}`);
 		
 	};
 	
