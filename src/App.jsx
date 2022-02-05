@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 
 const Home = lazy(() => import("./features/home"));
 const Game = lazy(() => import("./features/game"));
+const Ranking = lazy(() => import("./features/ranking"));
 
 
 
@@ -37,6 +38,7 @@ export default function App() {
 					
 					<Route path="/" element={<Home />} />
 					<Route path="/game" element={<Game />} />
+					<Route path="/ranking" element={<Ranking />} />
 					
 				</Routes>
 				

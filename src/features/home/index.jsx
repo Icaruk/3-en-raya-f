@@ -91,6 +91,7 @@ export default function Home() {
 				>	
 					<Button
 						fullWidth
+						variant="gradient"
 						onClick={pulsaJugarContraIA}
 					>
 						Jugar contra IA
@@ -98,13 +99,13 @@ export default function Home() {
 					
 					<Button
 						fullWidth
-						disabled
+						variant="light"
+						onClick={ () => navigate("/ranking") }
 					>
-						Jugar contra otro jugador
+						🏅 Ranking
 					</Button>
 				</Group>
 				
-
 			</Card>
 		
 		</Center>

@@ -205,14 +205,23 @@ export default function Game() {
 				
 				
 				{status === "playing" && <Text align="center">Partida en curso</Text> }
+				
 				{status === "ended" && <>
-					<Text align="center">Partida terminada</Text>
+					
+					<Text
+						align="center"
+						variant="gradient"
+						gradient={{ from: 'red', to: 'pink', deg: 45 }}
+						size="xl"
+						weight="bold"
+					>
+						¡Partida terminada!
+					</Text>
 					
 					{ winner
 						? <Text align="center">Ganador: {winner}</Text>
 						: <Text align="center">Empate</Text>
 					}
-					
 					
 				</>}
 				
