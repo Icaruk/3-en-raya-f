@@ -1,5 +1,5 @@
 
-import { Button, Card, Center, Group, Space, Text, Title } from "@mantine/core";
+import { Button, Card, Center, Group, Space, Text } from "@mantine/core";
 import { useNotifications } from "@mantine/notifications";
 import dame from "dame";
 import React, { useEffect, useMemo, useState } from "react";
@@ -46,6 +46,10 @@ export default function Game() {
 	// Funciones
 	// ***********************************************************
 	
+	/**
+	 * Obtiene los datos de un match a partir del `matchId`. 
+	 * @param {string} matchId _id de mongo del match
+	*/
 	const getPartida = async (matchId) => {
 		
 		console.log( `[match] loading ${matchId}` );
@@ -70,6 +74,12 @@ export default function Game() {
 	
 	
 	
+	/**
+	 * Lanza una petición a la API diciendo que el jugador quiere poner una ficha en ciertas coordenadas (`fila`y `columna`).  
+	 * Luego setea todos los estados necesarios con la respuesta del servidor (en la que viene la jugada de la IA de vuelta y/o el estado de la partida).
+	 * @param {number} fila 
+	 * @param {number} columna 
+	*/
 	const pulsaMeteFicha = async (fila, columna) => {
 		
 		if (status === "ended") return notifications.showNotification({
@@ -102,6 +112,9 @@ export default function Game() {
 	
 	
 	
+	/**
+	 * Lanza una petición a la API creando una nueva partida pero con el `matchId` actual, lo que hará que vuelva a su estado inicial.
+	*/
 	const pulsaReset = async () => {
 		
 		console.log( `[match] resetting ${searchParams.get("matchId")}` );
@@ -126,6 +139,9 @@ export default function Game() {
 	
 	
 	
+	/**
+	 * Lanza una petición a la API creando una nueva partida.
+	*/
 	const pulsaNuevaPartida = async () => {
 		
 		// Pido nueva partida

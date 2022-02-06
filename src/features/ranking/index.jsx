@@ -38,8 +38,6 @@ export default function Ranking() {
 				message: response?.message ?? "Error desconocido",
 			});
 			
-			console.log( `response (${typeof response}):`, response );
-			
 			setRanking(response);
 			
 		})();
