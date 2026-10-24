@@ -1,7 +1,7 @@
 module.exports = {
 	apps: [
 		{
-			name: "b-tresEnRaya",
+			name: "f-tresEnRaya",
 			script: "npm",
 			args: "run serve",
 
